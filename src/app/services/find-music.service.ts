@@ -4,12 +4,13 @@ import { CustomEncoder } from '../utils/custom-encoder';
 import { Observable } from 'rxjs';
 import { SearchResultModel, SearchResultModelAdapter } from '../store/models/search-result.model';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FindMusicService {
-  private readonly API_BASE_URL = 'https://deezerdevs-deezer.p.rapidapi.com/';
+  private readonly API_BASE_URL = environment.API_URL;
 
   constructor(private _http: HttpClient, private readonly _searchResultAdapter: SearchResultModelAdapter) {}
 
@@ -17,11 +18,10 @@ export class FindMusicService {
     const url = `${this.API_BASE_URL}search`;
     const httpParams: HttpParams = new HttpParams({ encoder: new CustomEncoder() }).set('q', searchTerm);
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      'x-rapidapi-host': '',
-      'x-rapidapi-key': '',
+      'x-rapidapi-host': environment.RAPID_HOST,
+      'x-rapidapi-key': environment.RAPID_API_KEY,
     });
 
-    console.log(process.env.TEST);
     return this._http
       .get<any>(url, { headers: httpHeaders, params: httpParams })
       .pipe(
