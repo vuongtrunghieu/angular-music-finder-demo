@@ -9,15 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { SearchResultModelAdapter } from './store/models/search-result.model';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ searchResult: FindMusicReducer }),
+    StoreModule.forRoot({searchResult: FindMusicReducer}),
     EffectsModule.forRoot([FindMusicEffects]),
     HttpClientModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    FormsModule,
   ],
   providers: [SearchResultModelAdapter],
   bootstrap: [AppComponent],
