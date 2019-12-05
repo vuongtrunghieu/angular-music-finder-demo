@@ -11,11 +11,25 @@ export class FindMusicEffects {
 
   @Effect() findMusic$ = this._actions$.pipe(
     ofType<FindMusicAction>(FindMusicActionTypes.FIND_MUSIC),
-    mergeMap(data =>
-      this.findMusicService.searchTracks(data.payload as string).pipe(
-        map(res => new SearchMusicSuccessAction(res)),
-        catchError(error => of(new SearchMusicSuccessAction(error))),
-      ),
-    ),
+    mergeMap(data => {
+      if (data['searchType'] === 'track') {
+        return this.findMusicService.searchTracks(data.payload as string).pipe(
+          map(res => new SearchMusicSuccessAction(res)),
+          catchError(error => of(new SearchMusicSuccessAction(error))),
+        );
+      }
+      if (data['searchType'] === 'album') {
+        return this.findMusicService.searchAlbums(data.payload as string).pipe(
+          map(res => new SearchMusicSuccessAction(res)),
+          catchError(error => of(new SearchMusicSuccessAction(error))),
+        );
+      }
+      if (data['searchType'] === 'artist') {
+        return this.findMusicService.searchArtists(data.payload as string).pipe(
+          map(res => new SearchMusicSuccessAction(res)),
+          catchError(error => of(new SearchMusicSuccessAction(error))),
+        );
+      }
+    }),
   );
 }

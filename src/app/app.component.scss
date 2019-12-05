@@ -46,23 +46,23 @@
       font-size: 1.125rem;
     }
 
-     input:-moz-placeholder {
+    input:-moz-placeholder {
       color: #ccc;
       font-size: 1.125rem;
     }
 
-     input::-webkit-input-placeholder {
+    input::-webkit-input-placeholder {
       color: #ccc;
       font-size: 18px;
     }
 
-     input:hover,
-     input:focus {
+    input:hover,
+    input:focus {
       outline: 0;
       box-shadow: none;
     }
 
-     .btn-search {
+    .btn-search {
       width: 70px;
       display: flex;
       align-items: center;
@@ -76,34 +76,68 @@
       cursor: pointer;
     }
 
-     .btn-search svg {
+    .btn-search svg {
       fill: #ccc;
       width: 30px;
       height: 30px;
       transition: all 0.2s ease-out, color 0.2s ease-out;
     }
 
-     .btn-search:hover,
-     .btn-search:focus {
+    .btn-search:hover,
+    .btn-search:focus {
       outline: 0;
       box-shadow: none;
     }
 
-     .btn-search:hover svg,
-     .btn-search:focus svg {
+    .btn-search:hover svg,
+    .btn-search:focus svg {
       fill: #666;
     }
 
+    .categories {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        cursor: pointer;
+      }
+
+      .category {
+        font-size: 0.875rem;
+        font-family: 'Helvetica', sans-serif;
+        display: inline-block;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 0 1rem;
+        line-height: 2rem;
+        color: #fff;
+        border-radius: 1rem;
+        margin-right: 0.625rem;
+      }
+      .category--active {
+        font-size: 0.875rem;
+        font-family: 'Helvetica', sans-serif;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.6);
+        padding: 0 1rem;
+        line-height: 2rem;
+        color: #000;
+        border-radius: 1rem;
+        margin-right: 0.625rem;
+      }
+    }
+
     @media screen and (max-width: 767px) {
-       .input-field {
+      .input-field {
         margin-bottom: 20px;
         height: 50px;
       }
-       input {
+      input {
         padding-left: 55px;
         font-size: 16px;
       }
-       .btn-search svg {
+      .btn-search svg {
         width: 26px;
         height: 26px;
       }

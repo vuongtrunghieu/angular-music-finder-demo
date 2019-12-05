@@ -12,6 +12,11 @@
         </button>
         <input id="search" type="text" placeholder="" [(ngModel)]="searchText" (keyup.enter)="onSearch()" />
       </div>
+      <div class="categories">
+        <span [ngClass]="searchType === 'album' ? 'category--active' : 'category'" (click)="searchType = 'album'">Album</span>
+        <span [ngClass]="searchType === 'artist' ? 'category--active' : 'category'" (click)="searchType = 'artist'">Artist</span>
+        <span [ngClass]="searchType === 'track' ? 'category--active' : 'category'" (click)="searchType = 'track'">Track</span>
+      </div>
     </fieldset>
   </section>
 </main>

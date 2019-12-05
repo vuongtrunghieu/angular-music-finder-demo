@@ -1,8 +1,10 @@
-import { SearchResultModel } from '../models/search-result.model';
 import { FindMusicAction, FindMusicActionTypes } from '../actions/find-music.actions';
+import { ArtistModel } from '../models/artist.model';
+import { AlbumModel } from '../models/album.model';
+import { TrackModel } from '../models/track.model';
 
 export interface FindMusicState {
-  results: Array<SearchResultModel>;
+  results: Array<ArtistModel> | Array<AlbumModel> | Array<TrackModel>;
   error: Error;
 }
 

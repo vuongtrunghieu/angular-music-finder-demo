@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
-import { SearchResultModel } from '../models/search-result.model';
+import {ArtistModel} from '../models/artist.model';
+import {AlbumModel} from '../models/album.model';
+import {TrackModel} from '../models/track.model';
 
 export enum FindMusicActionTypes {
   FIND_MUSIC = '[FIND-MUSIC] Find Music',
@@ -10,13 +12,13 @@ export enum FindMusicActionTypes {
 export class SearchMusicAction implements Action {
   readonly type = FindMusicActionTypes.FIND_MUSIC;
 
-  constructor(public payload: string) {}
+  constructor(public payload: string, public searchType: string) {}
 }
 
 export class SearchMusicSuccessAction implements Action {
   readonly type = FindMusicActionTypes.FIND_MUSIC_SUCCESS;
 
-  constructor(public payload: Array<SearchResultModel>) {}
+  constructor(public payload: Array<ArtistModel> | Array<AlbumModel> | Array<TrackModel>) {}
 }
 
 export class SearchMusicFailureAction implements Action {

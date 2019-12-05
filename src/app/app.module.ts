@@ -8,20 +8,22 @@ import { FindMusicEffects } from './store/effects/find-music.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { SearchResultModelAdapter } from './store/models/search-result.model';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ArtistModelAdapter } from './store/models/artist.model';
+import { AlbumModelAdapter } from './store/models/album.model';
+import { TrackModelAdapter } from './store/models/track.model';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({searchResult: FindMusicReducer}),
+    StoreModule.forRoot({ searchResult: FindMusicReducer }),
     EffectsModule.forRoot([FindMusicEffects]),
     HttpClientModule,
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     FormsModule,
   ],
-  providers: [SearchResultModelAdapter],
+  providers: [ArtistModelAdapter, AlbumModelAdapter, TrackModelAdapter],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
