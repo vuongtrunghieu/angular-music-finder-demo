@@ -199,4 +199,15 @@
       }
     }
   }
+
+  .player-bar {
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    margin: 0 25%;
+
+    audio {
+      width: 100%;
+    }
+  }
 }

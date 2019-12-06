@@ -14,11 +14,13 @@ export class AppComponent implements OnInit {
   title = 'ngrx-music-finder';
   searchText: string;
   searchType: string;
+  currentTrackLink: string;
   searchResults$: Observable<SearchMusicState>;
 
   constructor(private _store: Store<AppState>) {
     this.searchText = '';
     this.searchType = 'track';
+    this.currentTrackLink = null;
   }
 
   ngOnInit(): void {
@@ -33,5 +35,9 @@ export class AppComponent implements OnInit {
 
   goToDetailsPage(link: string): void {
     // TODO
+  }
+
+  playTrackPreview(trackLink: string): void {
+    this.currentTrackLink = trackLink;
   }
 }

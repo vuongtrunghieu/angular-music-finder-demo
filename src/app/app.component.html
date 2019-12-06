@@ -36,7 +36,11 @@
       <section class="content__main">
         <article *ngFor="let album of (searchResults$ | async).results.data" class="result">
           <img src="{{ album?.cover_medium }}" alt="{{ album?.cover }}" class="result__cover" />
-          <h4 class="result__name" (click)="goToDetailsPage(album?.tracklist)" matTooltip="{{ album?.title + ' - ' + album?.artist?.name }}">
+          <h4
+            class="result__name"
+            (click)="goToDetailsPage(album?.tracklist)"
+            matTooltip="{{ album?.title + ' - ' + album?.artist?.name }}"
+          >
             {{ album?.title }}
           </h4>
         </article>
@@ -47,11 +51,14 @@
       <section class="content__main">
         <article *ngFor="let track of (searchResults$ | async).results.data" class="result">
           <img src="{{ track?.album?.cover_medium }}" alt="{{ track?.album?.cover }}" class="result__cover" />
-          <h4 class="result__name" (click)="goToDetailsPage(track?.link)" matTooltip="{{ track?.title + ' - ' + track?.artist?.name }}">
+          <h4 class="result__name" (click)="playTrackPreview(track?.preview)" matTooltip="{{ track?.title + ' - ' + track?.artist?.name }}">
             {{ track?.title }}
           </h4>
         </article>
       </section>
     </ng-template>
   </section>
+  <footer *ngIf="currentTrackLink" class="player-bar">
+    <audio controls [src]="currentTrackLink">Your browser does not support the <code>audio</code> element.</audio>
+  </footer>
 </main>
