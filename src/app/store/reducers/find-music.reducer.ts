@@ -1,19 +1,21 @@
 import { FindMusicAction, FindMusicActionTypes } from '../actions/find-music.actions';
-import { ArtistModel } from '../models/artist.model';
-import { AlbumModel } from '../models/album.model';
-import { TrackModel } from '../models/track.model';
+import { SearchResultModel } from '../models/search-result.model';
 
-export interface FindMusicState {
-  results: Array<ArtistModel> | Array<AlbumModel> | Array<TrackModel>;
+export interface SearchMusicState {
+  results: SearchResultModel;
   error: Error;
 }
 
-const initialState: FindMusicState = {
-  results: [],
+const initialState: SearchMusicState = {
+  results: {
+    data: [],
+    total: 0,
+    searchType: null,
+  },
   error: undefined,
 };
 
-export function FindMusicReducer(state: FindMusicState = initialState, action: FindMusicAction) {
+export function FindMusicReducer(state: SearchMusicState = initialState, action: FindMusicAction) {
   switch (action.type) {
     case FindMusicActionTypes.FIND_MUSIC:
       return { ...state };

@@ -1,7 +1,5 @@
-import { ArtistModel } from './artist.model';
-import { AlbumModel } from './album.model';
-import { TrackModel } from './track.model';
+import { SearchMusicState } from '../reducers/find-music.reducer';
 
 export interface AppState {
-  readonly searchResult: Array<ArtistModel> | Array<AlbumModel> | Array<TrackModel>;
+  readonly searchResult: SearchMusicState;
 }

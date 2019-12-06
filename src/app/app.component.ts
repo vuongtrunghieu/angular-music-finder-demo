@@ -3,9 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './store/models/app-state.model';
 import { Observable } from 'rxjs';
 import { SearchMusicAction } from './store/actions/find-music.actions';
-import { ArtistModel } from './store/models/artist.model';
-import { AlbumModel } from './store/models/album.model';
-import { TrackModel } from './store/models/track.model';
+import { SearchMusicState } from './store/reducers/find-music.reducer';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +14,7 @@ export class AppComponent implements OnInit {
   title = 'ngrx-music-finder';
   searchText: string;
   searchType: string;
-  searchResults$: Observable<Array<ArtistModel> | Array<AlbumModel> | Array<TrackModel>>;
+  searchResults$: Observable<SearchMusicState>;
 
   constructor(private _store: Store<AppState>) {
     this.searchText = '';
