@@ -12,16 +12,20 @@ import { FormsModule } from '@angular/forms';
 import { ArtistModelAdapter } from './store/models/artist.model';
 import { AlbumModelAdapter } from './store/models/album.model';
 import { TrackModelAdapter } from './store/models/track.model';
+import { MatTooltipModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ searchResult: FindMusicReducer }),
-    EffectsModule.forRoot([FindMusicEffects]),
+    BrowserAnimationsModule,
     HttpClientModule,
+    StoreModule.forRoot({ searchResult: FindMusicReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([FindMusicEffects]),
     FormsModule,
+    MatTooltipModule,
   ],
   providers: [ArtistModelAdapter, AlbumModelAdapter, TrackModelAdapter],
   bootstrap: [AppComponent],

@@ -143,4 +143,60 @@
       }
     }
   }
+
+  .content {
+    font-family: $font-poppins;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+    .content__title {
+      padding-left: 1rem;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    .content__main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .result {
+      margin: 2rem 1.25rem;
+    }
+
+    .result__cover {
+      border-radius: 50%;
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .result__name {
+      display: block;
+      width: 12rem;
+      margin-top: 1rem;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .result__name:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+
+      .content__title {
+        padding-left: 3rem;
+      }
+
+      .content__main {
+        justify-content: center;
+      }
+    }
+  }
 }

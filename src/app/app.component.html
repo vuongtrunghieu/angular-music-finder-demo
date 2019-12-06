@@ -19,4 +19,39 @@
       </div>
     </fieldset>
   </section>
+  <section *ngIf="(searchResults$ | async).results.total > 0" class="content">
+    <ng-template [ngIf]="(searchResults$ | async).results.searchType === 'artist'">
+      <h1 class="content__title">{{ 'Artist' }}</h1>
+      <section class="content__main">
+        <article *ngFor="let artist of (searchResults$ | async).results.data" class="result">
+          <img src="{{ artist?.picture_medium }}" alt="{{ artist?.picture }}" class="result__cover" />
+          <h4 class="result__name" (click)="goToDetailsPage(artist?.tracklist)" matTooltip="{{ artist?.name }}">
+            {{ artist?.name }}
+          </h4>
+        </article>
+      </section>
+    </ng-template>
+    <ng-template [ngIf]="(searchResults$ | async).results.searchType === 'album'">
+      <h1 class="content__title">{{ 'Album' }}</h1>
+      <section class="content__main">
+        <article *ngFor="let album of (searchResults$ | async).results.data" class="result">
+          <img src="{{ album?.cover_medium }}" alt="{{ album?.cover }}" class="result__cover" />
+          <h4 class="result__name" (click)="goToDetailsPage(album?.tracklist)" matTooltip="{{ album?.title + ' - ' + album?.artist?.name }}">
+            {{ album?.title }}
+          </h4>
+        </article>
+      </section>
+    </ng-template>
+    <ng-template [ngIf]="(searchResults$ | async).results.searchType === 'track'">
+      <h1 class="content__title">{{ 'Tracks' }}</h1>
+      <section class="content__main">
+        <article *ngFor="let track of (searchResults$ | async).results.data" class="result">
+          <img src="{{ track?.album?.cover_medium }}" alt="{{ track?.album?.cover }}" class="result__cover" />
+          <h4 class="result__name" (click)="goToDetailsPage(track?.link)" matTooltip="{{ track?.title + ' - ' + track?.artist?.name }}">
+            {{ track?.title }}
+          </h4>
+        </article>
+      </section>
+    </ng-template>
+  </section>
 </main>

@@ -30,4 +30,8 @@ export class AppComponent implements OnInit {
       this._store.dispatch(new SearchMusicAction(this.searchText, this.searchType));
     }
   }
+
+  goToDetailsPage(link: string): void {
+    // TODO
+  }
 }
