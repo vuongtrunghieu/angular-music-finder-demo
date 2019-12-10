@@ -4,6 +4,7 @@ import { AppState } from './store/models/app-state.model';
 import { Observable } from 'rxjs';
 import { SearchMusicAction } from './store/actions/find-music.actions';
 import { SearchMusicState } from './store/reducers/find-music.reducer';
+import { TrackModel } from './store/models/track.model';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,13 @@ export class AppComponent implements OnInit {
   title = 'ngrx-music-finder';
   searchText: string;
   searchType: string;
-  currentTrackLink: string;
+  selectedTrack: TrackModel;
   searchResults$: Observable<SearchMusicState>;
 
   constructor(private _store: Store<AppState>) {
     this.searchText = '';
     this.searchType = 'track';
-    this.currentTrackLink = null;
+    this.selectedTrack = null;
   }
 
   ngOnInit(): void {
@@ -37,7 +38,7 @@ export class AppComponent implements OnInit {
     // TODO
   }
 
-  playTrackPreview(trackLink: string): void {
-    this.currentTrackLink = trackLink;
+  playTrackPreview(trackLink: TrackModel): void {
+    this.selectedTrack = trackLink;
   }
 }

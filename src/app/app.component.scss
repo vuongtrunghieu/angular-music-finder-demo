@@ -203,11 +203,34 @@
   .player-bar {
     position: fixed;
     bottom: 0;
-    width: 50%;
-    margin: 0 25%;
+    width: 100%;
+
+    .player {
+      min-height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 25%;
+      background: rgba(27, 27, 27, 1);
+    }
+
+    .track-title {
+      padding: 0 5rem 0 1rem;
+      color: #fff;
+    }
 
     audio {
+      border-radius: 34px;
+      width: 60%;
+    }
+
+    @media screen and (max-width: 767px) {
       width: 100%;
+      margin: unset;
+
+      .track-title {
+        padding-left: 3rem;
+      }
     }
   }
 }
